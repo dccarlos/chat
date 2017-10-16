@@ -25,16 +25,16 @@ public class SampleChatSecurityConfiguration extends WebSecurityConfigurerAdapte
     @Override
     protected void configure(HttpSecurity http) throws Exception {
       //@formatter:off
-        http
+        http.headers()
+            .frameOptions()
+            .sameOrigin()
+            .and()
             .authorizeRequests().antMatchers("/js/**", "/login").permitAll()
             .anyRequest().authenticated()
             .and()
             .formLogin().loginPage("/login").defaultSuccessUrl("/", true)
             .and()
-            .csrf().disable()
-            .headers()
-            .frameOptions()
-            .sameOrigin();
+            .csrf().disable();
       //@formatter:on
     }
 }
