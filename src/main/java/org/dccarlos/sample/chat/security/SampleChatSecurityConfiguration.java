@@ -31,7 +31,10 @@ public class SampleChatSecurityConfiguration extends WebSecurityConfigurerAdapte
             .and()
             .formLogin().loginPage("/login").defaultSuccessUrl("/", true)
             .and()
-            .csrf().disable();
+            .csrf().disable()
+            .headers()
+            .frameOptions()
+            .sameOrigin();
       //@formatter:on
     }
 }
