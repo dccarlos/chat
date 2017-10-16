@@ -21,6 +21,9 @@ public class SampleChatWebSocketConfig extends AbstractWebSocketMessageBrokerCon
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
 		// Socket name!
-		registry.addEndpoint("/sample-chat").withSockJS();
+        registry
+            .addEndpoint("/sample-chat")
+            .withSockJS()
+            .setClientLibraryUrl("https://cdn.jsdelivr.net/npm/sockjs-client@1.1.4/dist/sockjs.min.js");
 	}
 }
